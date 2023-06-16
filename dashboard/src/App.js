@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 function App() {
     // Fetching message from backend on mount
     useEffect(() => {
-        fetch("http://localhost:4000")
+        fetch("https://imara-health-backend.onrender.com")
             .then((res) => res.json())
     }, []);
 
