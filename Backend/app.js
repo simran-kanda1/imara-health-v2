@@ -15,7 +15,7 @@ app.use(cors());
 app.use(userRoute);
 
 const corsOptions = {
-  origin: "http://localhost:3000" // frontend URI (ReactJS)
+  origin: "https://imara-health-frontend.onrender.com" // frontend URI (ReactJS)
 }
 
 app.use(express.json());
