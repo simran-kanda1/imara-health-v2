@@ -1,0 +1,33 @@
+{
+  "dependencies": {
+    "@date-io/date-fns": "^2.16.0",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/lab": "^5.0.0-alpha.133",
+    "@mui/material": "^5.13.4",
+    "@mui/x-data-grid": "^6.0.0-beta.5",
+    "@mui/x-date-pickers": "^6.0.0-beta.5",
+    "@syncfusion/ej2-react-calendars": "^21.2.9",
+    "date-fns": "^2.30.0",
+    "dayjs": "^1.11.5",
+    "react-calendar": "^4.2.1",
+    "react-ios-time-picker": "^0.2.2",
+    "react-time-picker": "^4.2.0-beta"
+  },
+  "name": "imara-v2-newtime-2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "install-server": "cd Backend && npm install",
+    "start-server": "cd Backend && node app.js",
+    "install-client": "cd dashboard && npm install",
+    "build-client": "cd dashboard && npm run build",
+    "start-client": "cd dashboard && npm run start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
