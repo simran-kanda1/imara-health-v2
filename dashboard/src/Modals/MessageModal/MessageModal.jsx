@@ -5,7 +5,7 @@ const MessageModal = ({closeModal, user}) => {
     const [error,setError] = useState("");
     const [message,setMessage] = useState("");
     const handleSendMessage = () => {
-        axios.post("http://localhost:5000/sendMessage", {number : user.From , message : message})
+        axios.post("http://localhost:4000/sendMessage", {number : user.From , message : message})
         .then(response => {
             if(response.data.message == "Message Sent"){
                 setError("");

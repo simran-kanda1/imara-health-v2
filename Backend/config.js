@@ -1,6 +1,6 @@
 require('dotenv').config()
 const cfg = {};
-cfg.port = process.env.PORT || 5000;
+cfg.port = process.env.PORT || 8000;
 cfg.secret = process.env.APP_SECRET || 'Mercor';
 cfg.twilioAccountSid = process.env.TWILIO_ACCOUNT_SID || 'ACa1b97b2067cf53d969ac42d8a8a8b827';
 cfg.twilioAuthToken = process.env.TWILIO_AUTH_TOKEN || '3456922b65d542853f412357f5854664';

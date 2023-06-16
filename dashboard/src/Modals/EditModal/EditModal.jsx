@@ -27,7 +27,7 @@ const EditPatientModal = ({ closeModal,user }) => {
         setError("Please Provide A Valid Name, Appointment Date and Time")
     } else {
 
-        axios.post("http://localhost:5000/edit-user", {name,phoneNumber:user.phoneNumber,appointmentDate,showTime})
+        axios.post("http://localhost:4000/edit-user", {name,phoneNumber:user.phoneNumber,appointmentDate,showTime})
         .then(response => {
             if(response.data.message == "Data Updated"){
                 setError("")

@@ -14,7 +14,14 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(userRoute);
 
-const PORT = process.env.PORT || 5000;
+const corsOptions = {
+  origin: "http://localhost:3000" // frontend URI (ReactJS)
+}
+
+app.use(express.json());
+app.use(cors(corsOptions));
+
+const PORT = process.env.PORT || 8000;
 
 mongoose.set('strictQuery', true);
 mongoose.connect(mongoAtlasURI, {
