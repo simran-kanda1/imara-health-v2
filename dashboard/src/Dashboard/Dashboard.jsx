@@ -7,6 +7,7 @@ import DeleteModal from "../Modals/DeleteModal/DeleteModal.jsx"
 import EditModal from "../Modals/EditModal/EditModal.jsx";
 import PhoneModal from "../Modals/PhoneModal/PhoneModal.jsx"
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -89,6 +90,9 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-container">
+      <Helmet>
+        <title>Imara Health</title>
+      </Helmet>
       <div className="dash-head">
         <button className="logout-button" onClick={() => navigate('/')}>Log Out</button>
       </div>
