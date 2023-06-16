@@ -32,7 +32,7 @@ const AddPatientModal = ({ closeModal }) => {
     if(name == "" || phoneNumber == "" || appointmentDate == "" || showTime == ""){
         setError("Please Provide A Valid Name, Phone Number, Appointment Date and Time")
     } else {
-        axios.post("http://localhost:4000/add-user", {name,phoneNumber,appointmentDate,showTime})
+        axios.post("https://imara-health-backend.onrender.com/add-user", {name,phoneNumber,appointmentDate,showTime})
         .then(response => {
             if(response.status == 500 || response.data.message == "Phone Number Already Registered"){
                 setError(response.data.message);
