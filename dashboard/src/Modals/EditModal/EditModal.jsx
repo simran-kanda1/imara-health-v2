@@ -32,16 +32,16 @@ const EditPatientModal = ({ closeModal,user }) => {
         setError("Please Provide A Valid Name, Appointment Date and Time")
     } else {
         if (oldName != name){
-          whatChanged="name"
+          setWhatChanged("name")
         }
         if (oldTime != showTime && oldAppointmentDate != appointmentDate){
-          whatChanged= "time&appointmentDate"
+          setWhatChanged("time&appointmentDate")
         }
         else if (oldTime!= showTime){
-          whatChanged= "time"
+          setWhatChanged("time")
         }
         else if (oldAppointmentDate != appointmentDate){
-          whatChanged= "appointmentDate"
+          setWhatChanged("appointmentDate")
         }
         axios.post("https://imara-health-backend.onrender.com/edit-user", {name,phoneNumber:user.phoneNumber,appointmentDate,showTime,status,whatChanged})
         .then(response => {
