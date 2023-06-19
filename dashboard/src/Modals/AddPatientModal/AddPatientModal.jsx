@@ -10,7 +10,7 @@ import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 const AddPatientModal = ({ closeModal }) => {
   const [name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [appointmentDate, setAppointmentDate] = useState(dayjs('2023-07-12T01:00'));
+  const [appointmentDate, setAppointmentDate] = useState(dayjs(new Date()));
   const [time, setTime] = useState(dayjs('2023-07-12T01:00'));
   const [status,setStatus]= useState("unsent");
   const [error, setError] = useState("");

@@ -8,15 +8,16 @@ import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 
 const EditPatientModal = ({ closeModal,user }) => {
   const oldName= user.name;
-  const oldAppointmentDate= user.appointmentDate;
+  const oldAppointmentDate= dayjs(user.appointmentDate).format();
   const oldTime= user.showTime;
   const [name, setName] = useState(user.name);
   const [appointmentDate, setAppointmentDate] = useState(dayjs(user.appointmentDate));
   const [time, setTime] = useState(dayjs('2023-07-12T01:00'));
-  const [whatChanged, setWhatChanged] = useState("n/a")
+  const [whatChanged, setWhatChanged] = useState("n/a");
   const [error, setError] = useState("");
 
   const showTime= time.format("HH:mm");
+  const showDate= dayjs(appointmentDate).format();
   const status= "unsent";
 
   const handleChangeName = (event) => {
@@ -31,16 +32,19 @@ const EditPatientModal = ({ closeModal,user }) => {
     if (oldName != name){
       setWhatChanged("name")
     }
+    if (oldAppointmentDate != showDate){
+      setWhatChanged("appointmentDate")
+    }
     if (oldTime != showTime){
       setWhatChanged("time")
     }
-    if (oldAppointmentDate != appointmentDate){
-      setWhatChanged("appointmentDate")
+    if (oldTime != showTime && oldAppointmentDate != showDate){
+      setWhatChanged("time&appointmentDate")
     }
-  }
+    setError("Successfully Updated")
+  };
 
   const handleSubmit = () => {
-    {handleChanges}
     if(name == "" || appointmentDate == "" || showTime == ""){
         setError("Please Provide A Valid Name, Appointment Date and Time")
     } else {
@@ -103,6 +107,7 @@ const EditPatientModal = ({ closeModal,user }) => {
           </div>
         </div>
         <div className="buttonList">
+            <button onClick={handleChanges}>Update</button>
             <button onClick={handleSubmit}>Submit</button>
         </div>
         <div className="errorTag">{error}</div>
