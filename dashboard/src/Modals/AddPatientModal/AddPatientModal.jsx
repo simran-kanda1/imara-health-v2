@@ -14,6 +14,7 @@ const AddPatientModal = ({ closeModal }) => {
   const [time, setTime] = useState(dayjs('2023-07-12T01:00'));
   const [status,setStatus]= useState("unsent");
   const [error, setError] = useState("");
+  const whatChanged= "n/a";
 
   const showTime= time.format("HH:mm");
 
@@ -33,7 +34,7 @@ const AddPatientModal = ({ closeModal }) => {
     if(name == "" || phoneNumber == "" || appointmentDate == "" || showTime == ""){
         setError("Please Provide A Valid Name, Phone Number, Appointment Date and Time")
     } else {
-        axios.post("https://imara-health-backend.onrender.com/add-user", {name,phoneNumber,appointmentDate,showTime,status})
+        axios.post("https://imara-health-backend.onrender.com/add-user", {name,phoneNumber,appointmentDate,showTime,status,whatChanged})
         .then(response => {
             if(response.status == 500 || response.data.message == "Phone Number Already Registered"){
                 setError(response.data.message);

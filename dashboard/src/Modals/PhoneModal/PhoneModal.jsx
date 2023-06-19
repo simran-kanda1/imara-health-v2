@@ -5,9 +5,10 @@ const PhoneModal = ({closeModal, user}) => {
     const oldNum = user.phoneNumber;
     const [error,setError] = useState("");
     const status = "unsent";
+    const whatChanged= "phoneNumber";
     const [phoneNumberNow,setPhoneNumber] = useState(user.phoneNumber);
     const handleChangePhoneNumber = () => {
-        axios.post("https://imara-health-backend.onrender.com/edit-phono", {newPhoneNum : phoneNumberNow , oldNum : oldNum, status})
+        axios.post("https://imara-health-backend.onrender.com/edit-phono", {newPhoneNum : phoneNumberNow , oldNum : oldNum, status, whatChanged})
         .then(response => {
             if(response.data.message == "Phone Number Updated"){
                 setError("");

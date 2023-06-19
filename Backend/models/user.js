@@ -6,6 +6,7 @@ const UserSchema = new mongoose.Schema({
   appointmentDate : {type: String},
   showTime: {type: String},
   status: {type: String},
+  whatChanged: {type:String},
 });
 
 module.exports = mongoose.model('User', UserSchema);

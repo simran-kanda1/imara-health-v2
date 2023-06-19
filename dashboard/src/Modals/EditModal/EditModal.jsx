@@ -7,11 +7,14 @@ import { DesktopTimePicker } from '@mui/x-date-pickers/DesktopTimePicker';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 
 const EditPatientModal = ({ closeModal,user }) => {
+  const oldName= user.name;
+  const oldAppointmentDate= user.appointmentDate;
+  const oldTime= user.showTime;
   const [name, setName] = useState(user.name);
   const [appointmentDate, setAppointmentDate] = useState(dayjs('2023-07-12T01:00'));
   const [time, setTime] = useState(dayjs('2023-07-12T01:00'));
+  const [whatChanged, setWhatChanged] = useState("n/a")
   const [error, setError] = useState("");
-  const [isChanged, setIsChanged]= useState("n/a");
 
   const showTime= time.format("HH:mm");
   const status= "unsent";
@@ -28,7 +31,19 @@ const EditPatientModal = ({ closeModal,user }) => {
     if(name == "" || appointmentDate == "" || showTime == ""){
         setError("Please Provide A Valid Name, Appointment Date and Time")
     } else {
-        axios.post("https://imara-health-backend.onrender.com/edit-user", {name,phoneNumber:user.phoneNumber,appointmentDate,showTime,status})
+        if (oldName != name){
+          whatChanged="name"
+        }
+        if (oldTime != showTime && oldAppointmentDate != appointmentDate){
+          whatChanged= "time&appointmentDate"
+        }
+        else if (oldTime!= showTime){
+          whatChanged= "time"
+        }
+        else if (oldAppointmentDate != appointmentDate){
+          whatChanged= "appointmentDate"
+        }
+        axios.post("https://imara-health-backend.onrender.com/edit-user", {name,phoneNumber:user.phoneNumber,appointmentDate,showTime,status,whatChanged})
         .then(response => {
             if(response.data.message == "Data Updated"){
                 setError("")

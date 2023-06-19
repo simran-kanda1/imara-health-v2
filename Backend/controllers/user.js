@@ -20,6 +20,7 @@ exports.addUser = (req,res) => {
                 appointmentDate : req.body.appointmentDate,
                 showTime: req.body.showTime,
                 status: req.body.status,
+                whatChanged: req.body.whatChanged,
             })
             userData
             .save()
@@ -64,6 +65,7 @@ exports.editPhoneNumber = (req,res) => {
     .then(data => {
         if(data){
             data.status= req.body.status;
+            data.whatChanged= req.body.whatChanged;
             data.phoneNumber = newPhoneNum;
             data.save()
             .then(data => {
@@ -98,6 +100,7 @@ exports.editUser = (req,res) => {
             data.appointmentDate = req.body.appointmentDate;
             data.showTime= req.body.showTime;
             data.status= req.body.status;
+            data.whatChanged= req.body.whatChanged;
             data.save()
             .then(data => {
                 res.status(200).json({
