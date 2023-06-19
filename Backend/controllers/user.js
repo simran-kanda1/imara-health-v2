@@ -19,6 +19,7 @@ exports.addUser = (req,res) => {
                 phoneNumber : req.body.phoneNumber,
                 appointmentDate : req.body.appointmentDate,
                 showTime: req.body.showTime,
+                status: req.body.status,
             })
             userData
             .save()
@@ -95,6 +96,7 @@ exports.editUser = (req,res) => {
             data.name = req.body.name; 
             data.appointmentDate = req.body.appointmentDate;
             data.showTime= req.body.showTime;
+            data.status= req.body.status;
             data.save()
             .then(data => {
                 res.status(200).json({
