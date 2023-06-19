@@ -11,7 +11,7 @@ const EditPatientModal = ({ closeModal,user }) => {
   const oldAppointmentDate= user.appointmentDate;
   const oldTime= user.showTime;
   const [name, setName] = useState(user.name);
-  const [appointmentDate, setAppointmentDate] = useState(dayjs('2023-07-12T01:00'));
+  const [appointmentDate, setAppointmentDate] = useState(dayjs(user.appointmentDate));
   const [time, setTime] = useState(dayjs('2023-07-12T01:00'));
   const [whatChanged, setWhatChanged] = useState("n/a")
   const [error, setError] = useState("");
@@ -40,6 +40,7 @@ const EditPatientModal = ({ closeModal,user }) => {
   }
 
   const handleSubmit = () => {
+    {handleChanges}
     if(name == "" || appointmentDate == "" || showTime == ""){
         setError("Please Provide A Valid Name, Appointment Date and Time")
     } else {
@@ -102,7 +103,6 @@ const EditPatientModal = ({ closeModal,user }) => {
           </div>
         </div>
         <div className="buttonList">
-            <button onClick={handleChanges}>Update Changes</button>
             <button onClick={handleSubmit}>Submit</button>
         </div>
         <div className="errorTag">{error}</div>
