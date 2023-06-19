@@ -11,6 +11,7 @@ const EditPatientModal = ({ closeModal,user }) => {
   const [appointmentDate, setAppointmentDate] = useState(dayjs('2023-07-12T01:00'));
   const [time, setTime] = useState(dayjs('2023-07-12T01:00'));
   const [error, setError] = useState("");
+  const [isChanged, setIsChanged]= useState("n/a");
 
   const showTime= time.format("HH:mm");
   const status= "unsent";

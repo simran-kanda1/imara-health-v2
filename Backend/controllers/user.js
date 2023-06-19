@@ -63,6 +63,7 @@ exports.editPhoneNumber = (req,res) => {
     User.findOne({phoneNumber : oldPhoneNum})
     .then(data => {
         if(data){
+            data.status= req.body.status;
             data.phoneNumber = newPhoneNum;
             data.save()
             .then(data => {
