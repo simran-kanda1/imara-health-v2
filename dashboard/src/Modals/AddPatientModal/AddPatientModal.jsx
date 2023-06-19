@@ -16,6 +16,7 @@ const AddPatientModal = ({ closeModal }) => {
   const [error, setError] = useState("");
   const whatChanged= "n/a";
 
+  const showDate= dayjs(appointmentDate).format();
   const showTime= time.format("HH:mm");
 
   const handleChangeName = (event) => {
@@ -100,6 +101,9 @@ const AddPatientModal = ({ closeModal }) => {
               />
             </LocalizationProvider>
           </div>
+        </div>
+        <div className="displayUpdates">
+          <p>Selected Appointment: {showDate.substring(0,10)} at {showTime}</p>
         </div>
         <div className="buttonList">
             <button onClick={handleSubmit}>Submit</button>

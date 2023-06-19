@@ -14,6 +14,7 @@ const EditPatientModal = ({ closeModal,user }) => {
   const [appointmentDate, setAppointmentDate] = useState(dayjs(user.appointmentDate));
   const [time, setTime] = useState(dayjs('2023-07-12T01:00'));
   const [whatChanged, setWhatChanged] = useState("n/a");
+  const [updated, setUpdated]= useState("")
   const [error, setError] = useState("");
 
   const showTime= time.format("HH:mm");
@@ -22,6 +23,7 @@ const EditPatientModal = ({ closeModal,user }) => {
 
   const handleChangeName = (event) => {
     setName(event.target.value);
+    setUpdated("")
   };
 
   const handleChangeTime = (event) => {
@@ -42,11 +44,14 @@ const EditPatientModal = ({ closeModal,user }) => {
       setWhatChanged("time&appointmentDate")
     }
     setError("Successfully Updated")
+    setUpdated("yes")
   };
 
   const handleSubmit = () => {
     if(name == "" || appointmentDate == "" || showTime == ""){
         setError("Please Provide A Valid Name, Appointment Date and Time")
+    } else if (updated == ""){
+        setError("Please Select 'Update Changes' Before Submitting")
     } else {
         axios.post("https://imara-health-backend.onrender.com/edit-user", {name,phoneNumber:user.phoneNumber,appointmentDate,showTime,status,whatChanged})
         .then(response => {
@@ -106,8 +111,12 @@ const EditPatientModal = ({ closeModal,user }) => {
             </LocalizationProvider>
           </div>
         </div>
+        <div className="displayUpdates">
+          <p>Current Appointment: {oldAppointmentDate.substring(0,10)} at {oldTime}</p>
+          <p>Selected Appointment: {showDate.substring(0,10)} at {showTime}</p>
+        </div>
         <div className="buttonList">
-            <button onClick={handleChanges}>Update</button>
+            <button onClick={handleChanges}>Update Changes</button>
             <button onClick={handleSubmit}>Submit</button>
         </div>
         <div className="errorTag">{error}</div>
