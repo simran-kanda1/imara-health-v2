@@ -10,10 +10,10 @@ const EditPatientModal = ({ closeModal,user }) => {
   const [name, setName] = useState(user.name);
   const [appointmentDate, setAppointmentDate] = useState(dayjs('2023-07-12T01:00'));
   const [time, setTime] = useState(dayjs('2023-07-12T01:00'));
-  const [status,setStatus] = useState("")
   const [error, setError] = useState("");
 
   const showTime= time.format("HH:mm");
+  const status= "unsent";
 
   const handleChangeName = (event) => {
     setName(event.target.value);
@@ -27,7 +27,6 @@ const EditPatientModal = ({ closeModal,user }) => {
     if(name == "" || appointmentDate == "" || showTime == ""){
         setError("Please Provide A Valid Name, Appointment Date and Time")
     } else {
-        status="unsent"
         axios.post("https://imara-health-backend.onrender.com/edit-user", {name,phoneNumber:user.phoneNumber,appointmentDate,showTime,status})
         .then(response => {
             if(response.data.message == "Data Updated"){
