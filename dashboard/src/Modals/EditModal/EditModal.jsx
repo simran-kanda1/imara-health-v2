@@ -27,22 +27,22 @@ const EditPatientModal = ({ closeModal,user }) => {
     setTime(event.target.value);
   };
 
+  const handleChanges = () => {
+    if (oldName != name){
+      setWhatChanged("name")
+    }
+    if (oldTime != showTime){
+      setWhatChanged("time")
+    }
+    if (oldAppointmentDate != appointmentDate){
+      setWhatChanged("appointmentDate")
+    }
+  }
+
   const handleSubmit = () => {
     if(name == "" || appointmentDate == "" || showTime == ""){
         setError("Please Provide A Valid Name, Appointment Date and Time")
     } else {
-        if (oldName != name){
-          whatChanged("name")
-        }
-        if (oldTime != showTime && oldAppointmentDate != appointmentDate){
-          whatChanged("time&appointmentDate")
-        }
-        else if (oldTime!= showTime){
-          whatChanged("time")
-        }
-        else if (oldAppointmentDate != appointmentDate){
-          whatChanged("appointmentDate")
-        }
         axios.post("https://imara-health-backend.onrender.com/edit-user", {name,phoneNumber:user.phoneNumber,appointmentDate,showTime,status,whatChanged})
         .then(response => {
             if(response.data.message == "Data Updated"){
@@ -102,6 +102,7 @@ const EditPatientModal = ({ closeModal,user }) => {
           </div>
         </div>
         <div className="buttonList">
+            <button onClick={handleChanges}>Update Changes</button>
             <button onClick={handleSubmit}>Submit</button>
         </div>
         <div className="errorTag">{error}</div>
