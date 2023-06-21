@@ -60,6 +60,13 @@ const LoginForm = ({ setIsLoggedIn }) => {
 
   return (
     <Card>
+      <div className="logo">
+        <img 
+            src={require("./imara-logo1.jpg")} 
+            alt="logo" 
+            className="imara-logo"
+        />
+      </div>
       <h1 className="title">Sign In</h1>
       <p className="subtitle">
         Please log in using your username and password!
