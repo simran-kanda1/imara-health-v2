@@ -67,7 +67,6 @@ const LoginForm = ({ setIsLoggedIn }) => {
             className="imara-logo"
         />
       </div>
-      <h1 className="title">Sign In</h1>
       <p className="subtitle">
         Please log in using your username and password!
       </p>
