@@ -6,7 +6,7 @@ import "./DeleteModal.css"
 const DeleteModal = ({closeModal, user}) => {
     const [error,setError] = useState("");
     const handleDelete = () => {
-        axios.post("https://imara-health-backend.onrender.com/delete-user", {phoneNumber : user.phoneNumber})
+        axios.post("http://localhost:4000/delete-user", {phoneNumber : user.phoneNumber})
         .then(response => {
             if(response.data.message == "User Deleted"){
                 setError("");
