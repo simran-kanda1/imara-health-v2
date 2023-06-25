@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require("cors");
 const mongoose = require("mongoose");
-const mongoAtlasURI = "mongodb+srv://imaraUser:imara123@cluster0.ucrnbf2.mongodb.net/";
+const mongoAtlasURI = "mongodb+srv://imaraUser:imara123@imara-health2.l2kxkzz.mongodb.net/";
 const cron = require("node-cron");
 const notificationWorker = require("./workers/notificationWorker");
 const userRoute = require("./routes/user");
@@ -15,7 +15,7 @@ app.use(cors());
 app.use(userRoute);
 
 const corsOptions = {
-  origin: "https://imara-health-frontend.onrender.com" // frontend URI (ReactJS)
+  origin: "http://localhost:3000" // frontend URI (ReactJS)
 }
 
 app.use(express.json());
