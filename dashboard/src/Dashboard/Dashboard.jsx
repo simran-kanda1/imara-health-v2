@@ -27,7 +27,7 @@ const Dashboard = () => {
   }, [currentPage]);
 
   const fetchPatients = () => {
-    axios.get(`https://imara-health-backend.onrender.com/getAllUsers?limit=${patientsPerPage}&pages=${currentPage}`)
+    axios.get(`http://localhost:4000/getAllUsers?limit=${patientsPerPage}&pages=${currentPage}`)
     .then(response => {
       if(response.data.messsage = "Data Fetched"){
         setTotalMessages(response.data.totalLength);
@@ -75,7 +75,7 @@ const Dashboard = () => {
   }
 
   const searchPatients = async () => {
-    const res = await axios.get(`https://imara-health-backend.onrender.com/searchByUserName?name=${searchText}&limit=${patientsPerPage}&pages=${currentPage}`);
+    const res = await axios.get(`http://localhost:4000/searchByUserName?name=${searchText}&limit=${patientsPerPage}&pages=${currentPage}`);
     setTotalMessages(res.data.totalLength);
     setPatients(res.data.arrayList);
     setCurrentPage(1);

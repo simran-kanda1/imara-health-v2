@@ -53,7 +53,7 @@ const EditPatientModal = ({ closeModal,user }) => {
     } else if (updated == ""){
         setError("Please Select 'Update Changes' Before Submitting")
     } else {
-        axios.post("https://imara-health-backend.onrender.com/edit-user", {name,phoneNumber:user.phoneNumber,appointmentDate,showTime,status,whatChanged})
+        axios.post("http://localhost:4000/edit-user", {name,phoneNumber:user.phoneNumber,appointmentDate,showTime,status,whatChanged})
         .then(response => {
             if(response.data.message == "Data Updated"){
                 setError("")
