@@ -11,7 +11,7 @@ exports.addUser = (req,res) => {
     .then(data => {
         if(data){
             res.status(200).json({
-                message : "Phone Number Already Registered"
+                message : "Phone Number Already Registered."
             })
         } else {
             const userData = new User({
