@@ -70,7 +70,7 @@ exports.editPhoneNumber = (req,res) => {
             data.save()
             .then(data => {
                 res.status(200).json({
-                    message : "Phone Number Updated"
+                    message : "Phone Number Updated."
                 })
             })
             .catch(err => {
