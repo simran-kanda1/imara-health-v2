@@ -13,7 +13,7 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const [patients, setPatients] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [patientsPerPage,setPatientsPerPage] = useState(6);
+  const [patientsPerPage,setPatientsPerPage] = useState(12);
   const [modalContent, setModalContent] = useState(false);
   const [modalEditContent, setEditModalContent] = useState(false);
   const [modalDeleteContent, setDeleteModalContent] = useState(false);
@@ -83,7 +83,7 @@ const Dashboard = () => {
       setPatientsPerPage(res.data.totalLength);
     } 
     else {
-      setPatientsPerPage(6);
+      setPatientsPerPage(12);
     }
     setSearchText("")
   };
